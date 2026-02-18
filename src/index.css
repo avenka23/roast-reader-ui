@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff4d00;
+  --color-primary-hover: #ff6600;
+  --color-background: #050505;
+  --color-background-card: #0f0f14;
+  --color-background-modal: rgba(20, 20, 25, 0.75);
+  --color-zinc-850: #1f1f23;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-burn: 'Bebas Neue', cursive;
+  --font-mono: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
+
+  --animate-pulse-fast: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer base {
+  button {
+    @apply cursor-pointer;
+  }
+
+  body {
+    @apply bg-background text-[#e5e5e5] font-sans antialiased min-h-screen pb-24;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255, 77, 0, 0.04) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(255, 77, 0, 0.03) 0%, transparent 30%);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+@layer components {
+  .burn-font {
+    @apply font-burn tracking-[0.04em] italic uppercase;
+  }
+
+  .glass {
+    @apply bg-background-modal backdrop-blur-[16px] border;
+    border-color: rgba(255, 77, 0, 0.12);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+    will-change: transform;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    @apply border-primary/50;
+    filter: drop-shadow(0 10px 25px rgba(255, 77, 0, 0.2));
+  }
+
+  .chip {
+    @apply font-mono uppercase tracking-wide;
+  }
+
+  .modal-blur {
+    @apply backdrop-blur-[12px] bg-black/88;
+  }
+}
